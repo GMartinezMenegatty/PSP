@@ -13,7 +13,7 @@ public  class InformeSistema {
         System.out.println("--------------------");
 
         long memoria_total = Runtime.getRuntime().totalMemory();
-        System.out.println("Total reservada : "+ memoria_total);
+        System.out.println("Total reservada: "+ memoria_total);
     }
 }
 
