@@ -1,35 +1,66 @@
-/*
+import java.util.Scanner;
 
- */
-
-import java.io.IOException;
-import java.util.*;
 public class Interfaz {
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("¿Qué nivel quieres usar? (1, 2, 3 o 4): ");
-            String input = scanner.nextLine();
 
-            if (input.equals("1")) {
-                System.out.print("Introduce un número (o 'salir' para terminar): ");
-                scanner.nextLine();
-                Lanzador.nivel1();
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("¿Qué nivel quieres usar? (1, 2, 3 o 4): ");
+        String opcion = scanner.nextLine();
+
+        if (opcion.equals("1")) {
+
+            System.out.print("Introduce un número (o 'salir' para terminar): ");
+            String numero = scanner.nextLine();
+
+            try {
+                Lanzador.nivel1(numero);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
             }
-            if (input.equals("2")) {
-                System.out.print("Introduce un número (o 'salir' para terminar): ");
-                scanner.nextLine();
-                Lanzador.nivel2();
-            }
-            if (input.equals("3")) {
-                System.out.print("Introduce un número (o 'salir' para terminar): ");
-                scanner.nextLine();
-                Lanzador.nivel3();
-            }
-            if (input.equals("4")) {
-                System.out.print("Introduce un número (o 'salir' para terminar): ");
-                scanner.nextLine();
-                Lanzador.nivel4();
-            }
+
         }
+
+        if (opcion.equals("2")) {
+
+            System.out.print("Introduce un número (o 'salir' para terminar): ");
+            String numero = scanner.nextLine();
+
+            try {
+                Lanzador.nivel2(numero);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
+
+        if (opcion.equals("3")) {
+
+            System.out.print("Introduce un número (o 'salir' para terminar): ");
+            String numero = scanner.nextLine();
+
+            try {
+                Lanzador.nivel3(numero);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
+
+        if (opcion.equals("4")) {
+
+            System.out.print("Introduce un número (o 'salir' para terminar): ");
+            String numero = scanner.nextLine();
+
+            try {
+                Lanzador.nivel4(numero);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
+
+        scanner.close();
     }
 }
