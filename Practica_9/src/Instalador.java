@@ -1,3 +1,7 @@
+/**
+ * Clase que se encarga de la descarga de meditacion y mantras.
+ */
+
 public class Instalador implements Runnable {
 
     private final Descarga meditacion;
@@ -7,6 +11,10 @@ public class Instalador implements Runnable {
         this.meditacion = meditacion;
         this.mantras = mantras;
     }
+
+    /**
+     * Método que comprueba que estén descargados meditacion y mantras.
+     */
 
     @Override
     public void run() {
