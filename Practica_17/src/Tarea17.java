@@ -14,30 +14,49 @@ class Texto{
     String texto;
 }
 
-class ContadorTotal{
+class ContadorTotal {
+    int Total = 0;
 
+
+    public int getTotal() {
+        return Total;
+    }
+
+    public void setTotal(int total) {
+        Total = total;
+    }
 }
 
 
 public class Tarea17 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+
         Consonantes[] consonantes = new Consonantes[5];
+
         for (int i = 0; i < 5; i++) {
             consonantes[i] = new Consonantes();
             System.out.print("Introduce la consonante " + (i + 1) + ": ");
             consonantes[i].consonante = sc.nextLine();
         }
+
         System.out.print("Introduce el texto: ");
         Texto texto = new Texto();
         texto.texto = sc.nextLine().repeat(2000);
+
+        for (Consonantes letra : consonantes) {
+            for (int i = 0; i < consonantes.length; i++) {
+
+            }
+        }
+
 
         ContadorTotal contadorTotal = new ContadorTotal();
 
 
 
-        System.out.println("El total de apariciones es: " + contadorTotal);
+        System.out.println("El total de apariciones es: " + contadorTotal.getTotal());
     }
 }
 
