@@ -6,8 +6,31 @@
 //Para que se note el problema, repite el texto 2.000 veces: texto.repeat(2000).
 import java.util.*;
 
-class Consonantes{
+class Consonantes extends Thread{
     String consonante;
+    String texto;
+    ContadorTotal contadorTotal;
+    int cantidad = 0;
+
+    public Consonantes(String consonante, String texto, ContadorTotal contadorTotal) {
+        this.consonante = consonante;
+        this.texto = texto;
+        this.contadorTotal = contadorTotal;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.toLowerCase(texto.charAt(i)) ==
+                    Character.toLowerCase(consonante.charAt(0))) {
+                cantidad++;
+            }
+        }
+
+        contadorTotal.sumar(cantidad);
+
+        System.out.println("La consonante " + consonante + " aparece " + cantidad + " veces.");
+    }
 }
 
 class Texto{
@@ -15,15 +38,14 @@ class Texto{
 }
 
 class ContadorTotal {
-    int Total = 0;
+    private int Total = 0;
 
+    public synchronized void sumar(int cantidad) {
+        Total += cantidad;
+    }
 
     public int getTotal() {
         return Total;
-    }
-
-    public void setTotal(int total) {
-        Total = total;
     }
 }
 
@@ -33,30 +55,39 @@ public class Tarea17 {
 
         Scanner sc = new Scanner(System.in);
 
-        Consonantes[] consonantes = new Consonantes[5];
+        String[] consonantes = new String[5];
 
         for (int i = 0; i < 5; i++) {
-            consonantes[i] = new Consonantes();
             System.out.print("Introduce la consonante " + (i + 1) + ": ");
-            consonantes[i].consonante = sc.nextLine();
+            consonantes[i] = sc.nextLine();
         }
 
         System.out.print("Introduce el texto: ");
         Texto texto = new Texto();
         texto.texto = sc.nextLine().repeat(2000);
 
-        for (Consonantes letra : consonantes) {
-            for (int i = 0; i < consonantes.length; i++) {
-
-            }
-        }
-
 
         ContadorTotal contadorTotal = new ContadorTotal();
 
+        Consonantes[] consonante = new Consonantes[5];
 
+        for (int i = 0; i < 5; i++) {
+            consonante[i] = new Consonantes(consonantes[i], texto.texto, contadorTotal);
+            consonante[i].start();
+        }
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                consonante[i].join();
+            } catch (InterruptedException e) {
+                System.out.println("El hilo principal ha sido interrumpido.");
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
 
         System.out.println("El total de apariciones es: " + contadorTotal.getTotal());
+        sc.close();
     }
 }
 
