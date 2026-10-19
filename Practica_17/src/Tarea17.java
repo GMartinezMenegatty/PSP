@@ -6,6 +6,10 @@
 //Para que se note el problema, repite el texto 2.000 veces: texto.repeat(2000).
 import java.util.*;
 
+/*
+Clase que contiene la lógica de Consonantes.
+ */
+
 class Consonantes extends Thread{
     String consonante;
     String texto;
@@ -17,6 +21,10 @@ class Consonantes extends Thread{
         this.texto = texto;
         this.contadorTotal = contadorTotal;
     }
+
+    /*
+    Método que cuenta las consonantes en el texto proporcionado
+     */
 
     @Override
     public void run() {
@@ -33,9 +41,17 @@ class Consonantes extends Thread{
     }
 }
 
+/*
+Clase que inicializa el Texto
+ */
+
 class Texto{
     String texto;
 }
+
+/*
+Clase que crea el Contador y lo va aumentando
+ */
 
 class ContadorTotal {
     private int Total = 0;
@@ -52,25 +68,45 @@ class ContadorTotal {
 
 public class Tarea17 {
     public static void main(String[] args) {
-
+        /*
+        Pedimos las 5 consonantes
+         */
         Scanner sc = new Scanner(System.in);
 
         String[] consonantes = new String[5];
 
         for (int i = 0; i < 5; i++) {
             System.out.print("Introduce la consonante " + (i + 1) + ": ");
-            consonantes[i] = sc.nextLine();
+
+            String letra = sc.nextLine();
+
+            /*
+            Comprobamos que sean Consonantes
+             */
+
+            if (letra.length() == 1 && Character.isLetter(letra.charAt(0)) && !"aeiouAEIOU".contains(letra)) {
+                consonantes[i] = String.valueOf(letra.charAt(0));
+
+            } else {
+                System.out.println("Introduce una consonante.");
+                i--;
+            }
         }
 
+        /*
+        Pedimos el texto y lo repetimos 2000 veces
+         */
         System.out.print("Introduce el texto: ");
         Texto texto = new Texto();
         texto.texto = sc.nextLine().repeat(2000);
-
 
         ContadorTotal contadorTotal = new ContadorTotal();
 
         Consonantes[] consonante = new Consonantes[5];
 
+        /*
+        Iniciamos el Contador y Consonantes
+         */
         for (int i = 0; i < 5; i++) {
             consonante[i] = new Consonantes(consonantes[i], texto.texto, contadorTotal);
             consonante[i].start();
@@ -85,6 +121,10 @@ public class Tarea17 {
                 return;
             }
         }
+
+        /*
+        Mostramos el total de repeticiones de consonantes
+         */
 
         System.out.println("El total de apariciones es: " + contadorTotal.getTotal());
         sc.close();
