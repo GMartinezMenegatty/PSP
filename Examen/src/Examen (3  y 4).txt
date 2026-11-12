@@ -1,0 +1,27 @@
+Ejercicio 3.
+
+Los hilos no se están ejecutando ya que nunca se empezaron con "start", "run()" no inicia los hilos,
+sirve es para contener las tareas que los hilos tendrán que hacer.
+
+Por esta razón aparecerá: 
+Ejecutando: main
+Ejecutando: main
+Fin del main.
+
+
+Ejercicio 4.
+
+No funciona correctamente.
+Queda en un bucle infinito con el almacén vacío.
+
+Salida por consola: Almacén vacío. Consumidor espera...
+
+Solución:
+Si le colocamos "wait()" al candado "sacar" en vez de dejarlo solo con el "Thread.sleep(500)", 
+solucionaríamos el problema, ya que sleep solo sirve para hacer esperar al hilo, pero nunca libera el candado para que otros puedan entrar en algún momento después de su turno.
+
+
+
+
+
+
