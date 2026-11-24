@@ -49,7 +49,7 @@ En caso de empate, se devuelve la primera palabra.
 - Espera un máximo de 2 segundos.
 - Realiza hasta 3 intentos si no recibe respuesta.
 - Si no recibe respuesta, muestra el mensaje
-  **Servidor no disponible** y finaliza.
+  **Servidor_tcp no disponible** y finaliza.
 
 Para controlar el tiempo de espera se utiliza:
 
@@ -62,7 +62,7 @@ detectar que el servidor no ha respondido.
 
 ## 5. Pruebas de funcionamiento
 
-### Prueba 1: Servidor disponible
+### Prueba 1: Servidor_tcp disponible
 
 **Entrada:**
 
@@ -78,7 +78,7 @@ Palabra más larga: programacion
 Longitud: 12
 ```
 
-### Prueba 2: Servidor no disponible
+### Prueba 2: Servidor_tcp no disponible
 
 Se ejecuta el cliente sin arrancar el servidor.
 
@@ -91,14 +91,14 @@ Intento 2
 Tiempo de espera agotado.
 Intento 3
 Tiempo de espera agotado.
-Servidor no disponible
+Servidor_tcp no disponible
 ```
 
 Se realiza un envío inicial y tres reintentos.
 
 ## 6. Instrucciones de ejecución
 
-1. Ejecutar `Servidor`.
+1. Ejecutar `Servidor_tcp`.
 2. Ejecutar `Cliente`.
 3. Introducir las palabras separadas por comas.
 4. Comprobar la respuesta del servidor.
