@@ -24,7 +24,7 @@ El servidor escucha en el puerto `8000`.
 | Número superior al secreto | MENOR |
 | Número correcto | ACIERTO en N intentos |
 | ADIOS | OK Hasta luego |
-| Comando incorrecto | ERR Comando no válido |
+| Comando incorrecto | Comando no válido |
 
 ## 3. Funcionamiento del servidor
 
@@ -57,11 +57,25 @@ inesperadas sin mostrar la traza de la excepción.
 
 ## 6. Prueba con Netcat
 
-Para conectarnos al servidor utilizamos:
+Para conectarnos al servidor de Windows utilizamos `wsl` 
+y ejecutamos los siguientes comandos:
+
+Para iniciar el servidor TCP:
 
 ```
-nc localhost 8000
+javac Servidor_tcp.java
+java Servidor_tcp
 ```
+
+Para conectarnos a Netcat y jugar (en otra terminal wsl):
+
+```
+nc -v localhost 8000
+```
+
+### Ejemplo de una partida en Netcat
+
+![captura_netcat](capturas/partida_netcat.png)
 
 ### Ejemplo de una partida
 
@@ -82,8 +96,8 @@ OK Hasta luego
 
 ## 7. Instrucciones de ejecución
 
-1. Ejecutar la clase `Servidor.java`.
-2. Ejecutar la clase `Cliente.java` o utilizar Netcat.
+1. Ejecutar la clase `Servidor_tcp.java`.
+2. Ejecutar la clase `Cliente_tcp.java`.
 3. Introducir números entre 1 y 100.
 4. Intentar adivinar el número secreto.
 5. Escribir `ADIOS` para finalizar la conexión.
